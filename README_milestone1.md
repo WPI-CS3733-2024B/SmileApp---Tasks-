@@ -166,6 +166,10 @@ Similar to the StudentApp exercise, you will commit your code to a repository un
     ```
         $ pip install -r requirements.txt
     ```
+    **Note:**
+    If the installation of psycopg2 fails, replace the last line in `requirements.txt` with the following and re-run the above command. 
+    
+    ```psycopg2-binary==2.9.10```
     <!-- *Note for Windows users*: If `pip` is not installed in your system, you need to also add the Python\Scripts path to the Windows Path. On Windows, Python will typically be installed under the directory `C:\Users\<username>\AppData\Local\Programs\Python\Python3.x`. Locate your Python installation directory, make sure `pip` or `pip3` is under the `Scripts` directory, and add the "path of Scripts directory" to the Path environment variable.  -->
 
 
