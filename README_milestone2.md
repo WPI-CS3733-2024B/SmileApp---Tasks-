@@ -161,6 +161,8 @@ In our Smile Portal app, the users will be able to associate some predefined tag
          ```python
          # Create a new post
          >>> p = Post(title="Test post-1", body = "First test smile post. Don't forget to smile today!", likes=0, happiness_level = 3)
+         # Write the new post to the database
+         >>> db.session.add(p)
          # Get the `tag` object with `name` "funny" 
          >>> t1 = db.session.scalars(sqla.select(Tag).where(Tag.name == "funny")).first()
          # Add it to the `tags` relationship of the new post
@@ -170,8 +172,6 @@ In our Smile Portal app, the users will be able to associate some predefined tag
          >>> t2 = db.session.scalars(sqla.select(Tag).where(Tag.name == "heartwarming")).first()
          # Append it to the `tags` relationship of the new post
          >>> p.tags.add(t2)
-         # Write the new post to the database
-         >>> db.session.add(p)
          >>> db.session.commit()
          >>> 
          ```
