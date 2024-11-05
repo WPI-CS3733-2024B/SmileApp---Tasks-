@@ -197,7 +197,7 @@ In our Smile Portal app, the users will be able to associate some predefined tag
 
 ---
 
-In Task 3, we manually associated tags with posts. Now we will update the `PostForm` in `forms.py` and the `create.html` template and we will allow users choose some tags for their post when they create a new post. We will also update  `_post.html` and display the tags associated with each post.
+In Task 3, we manually associated tags with posts. Now we will update the `PostForm` in forms.py and create.html template. We will allow users choose some tags for their post when they create a new story. We will also update  `_post.html` and display the tags associated with each post.
 
    1. In `forms.py`, add a new field named `tag` to `PostForm` (before `submit`). This should be a `QuerySelectMultipleField` as shown below. The tag declaration is not complete; you need to define the lambda functions for `query_factory` and `get_label` fields.
 
@@ -234,7 +234,7 @@ In Task 3, we manually associated tags with posts. Now we will update the `PostF
       > flask shell 
       # change the title in the below query to the title the new story you created. 
       >>> p1 = db.session.scalars(sqla.select(Post).where(Post.title == 'The story title')).first()
-      >>> for t in p1.tags:
+      >>> for t in p1.get_tags():
       >>>     print(t.name)
       ```
       The `print` statement should print the tags you selected when you filled out the "Create Post" form. 
@@ -246,7 +246,7 @@ In Task 3, we manually associated tags with posts. Now we will update the `PostF
 
 We will now update  `_post.html` and display the tags associated with each post.
 
-1. Include a Jinja2 `for` block in `_post.html` and display all the tag names associated with the post (Hint: use  `post.get_tags().all()`. This will give you the collection of tags. You need to just display the name of each tag. )
+1. Include a Jinja2 `for` block in `_post.html` and display all the tag names associated with the post (Hint: use  `post.get_tags()`. This will give you the collection of tags. You need to just display the name of each tag. )
 
    The line that you should add your code is marked with the following comment.
 
@@ -262,7 +262,7 @@ We will now update  `_post.html` and display the tags associated with each post.
    Add a class selector `tagitem` in  `main.css` . We will use this to style the tag names in  `_post.html`.
    Add styling to adjust the text alignment,  margin, padding, border, and background-color.
 
-3. In `_post.html`, enclose the tag name in a span element and style it with class selector `tagitem` .
+3. In `_post.html`, enclose the tag name in a `<span>` element and style it with class selector `tagitem` .
 
    Create other posts and associate tags with your posts. 
    
@@ -287,9 +287,9 @@ Lastly, we will add sorting functionality to our app. The user will be able to s
 
    `SortForm` should have a `SelectField` (with `choices`  'Date', 'Title', '# of likes', and 'Happiness level') and a `SubmitField` with label "Refresh".
 
-2. In `index.html`, add template to render an instance of a `sortForm`. (You will create the form instance in step-3 and pass it to `render_template` function when `index.html` is rendered. ) 
+2. In `index.html`, add template to render an instance of a `SortForm`. (You will create the form instance in step-3 and pass it to `render_template` function when `index.html` is rendered. ) 
    
-   The form should display the sort attribute select-box and the "Refresh" submit button. Enclose the select-box and the button in a `<div>` element. 
+   The form should display the sort attribute select-box and the "Refresh" submit button. 
    
 3. In `routes.py`, edit the `main.index` route function. 
    
@@ -307,21 +307,29 @@ Lastly, we will add sorting functionality to our app. The user will be able to s
     </div>
    <br> 
    <div style="border: 1px solid gray;  padding : 5px" >
-   <b>Important Note:</b> 
-   * The data recieved in a post request (i.e., `form.data`) will always be string. So, even though a particular field of the form has a numberic value, the recived data will be in string format.
-   To understand the `sortform` data you receive in the POST response (i.e., `sform.choice.data`) and make sure to print this value in your route view function. If the `SelectField` in your sort form is supposed to return you an `integer` value, you will receive it as `string` and you may convert it to an `int` value by using the Python `int()` function, i.e., `int(sform.choice.data)`.    
+   <b>Important Note:</b>
+
+   * The data recieved in a post request (e.g., `form.choice.data`) will always be a string. So, even though a particular field of the form has a numberic value, the recived data will be in string format.
+   To understand the `form` data you receive in the POST response  and make sure to print this value in your route view function. If the `SelectField` in your sort form is supposed to return you an `integer` value, you will receive it as `string` and you may convert it to an `int` value by using the Python `int()` function.    
    </div>
    <br>
 
-4. In `index.html` style the sortorder form element using the `formselect` CSS element we defined in milestone1. 
+4. Add styling to the form elements:
+   * In `index.html` style the sortorder form element using the `formselect` CSS element we defined in milestone1. 
+
    
    See the below image for an example styling.
 
    <kbd> <img src="README.d/milestone2_task5c.png" width="900" border="2"> </kbd>
 
+   <div style="border: 1px solid gray;  padding : 5px" >
+      <b>Note:</b> 
+      After sorting stories, if you "like" a story the page will be reloaded and the stories will be sorted by the default sort order (i.e., timestamp). In milestone3, we will refactor our "like" use case and update the like counts without reloading the page (using JavaScript).
+    </div>
+
 ----------
 
-Add couple additional smiles posts and make sure that the stories are sorted correctly.  When you complete milestone2 , the main page will be similar to the following:
+   Add couple additional smiles posts and make sure that the stories are sorted correctly.  When you complete milestone2 , the main page will be similar to the following:
 
    <kbd> <img src="README.d/milestone2_final.png" width="900" border="2"> </kbd>
 
