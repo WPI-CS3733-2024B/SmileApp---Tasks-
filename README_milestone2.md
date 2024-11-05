@@ -67,13 +67,14 @@ In our Smile Portal app, the users will be able to associate some predefined tag
    2. In `models.py`, add a SQLAlchemy association table called `postTags` (use `db.Table` SQLAlchemy funtion to create this table - for examples, see the `assigned` table in the [Flask class example](https://github.com/WPI-arslanay/FlaskLectureExample/tree/main/13-SQLAlchemy_ManytoMany) OR the `students_majors_table` table we defined in StudentApp application. )
 
       This table will store the associations between posts and the tags. Note that a post may be associated with multiple tags, and a tag can be associated to many posts. 
-
+   ---
       <div style="border: 1px solid gray;  padding : 5px" >
          <i>Important note:</i> 
          In the file, `postTags` definition should be placed before both `Post` and `Tag` definitions. 
       </div>
       <br>
-
+   ---
+   
       `postTags` should have the following attributes:
 
       |    | Field name | Description | Field type | Constraints | Comments |
@@ -105,7 +106,8 @@ In our Smile Portal app, the users will be able to associate some predefined tag
       flask db migrate -m "Adding Tag table and many to many association between Tag and Post tables."
       flask db upgrade
    ```
-   <div style="border: 1px solid gray;  padding : 5px" >
+   ---   
+   <div style="border: 1px solid gray;  padding : 10px" >
    <b>Important note:</b>  
    
    *  If the above commands fail, or
@@ -117,6 +119,7 @@ In our Smile Portal app, the users will be able to associate some predefined tag
 
    </div>
    
+   ---   
 
    7. When the database is initialized, we would like to add some default tag names to the `Tag` table. 
       * Add a SQLAlchemy event listener for  the `Major` table which will insert te below tag names to the database after it is created. See the `add_majors` function we defined in the StudentApp as an example. 
@@ -301,18 +304,24 @@ Lastly, we will add sorting functionality to our app. The user will be able to s
    * You can use helper functions to get the sort attribute. For example given the sort option, your helper function will return the corresponding `Post` field. 
    * Make sure to import `SortForm` in routes.py.
    
-    <div style="border: 1px solid gray;  padding : 5px" >
+    ---  
+    <div style="border: 1px solid gray;  padding : 10px" >
       <b>Remember:</b> 
       The `SortForm` instance you created needs to be passed to the `render_template` call for rendering. 
     </div>
-   <br> 
-   <div style="border: 1px solid gray;  padding : 5px" >
+   
+   ---
+
+
+   <div style="border: 1px solid gray;  padding : 10px" >
    <b>Important Note:</b>
 
    * The data recieved in a post request (e.g., `form.choice.data`) will always be a string. So, even though a particular field of the form has a numberic value, the recived data will be in string format.
    To understand the `form` data you receive in the POST response  and make sure to print this value in your route view function. If the `SelectField` in your sort form is supposed to return you an `integer` value, you will receive it as `string` and you may convert it to an `int` value by using the Python `int()` function.    
    </div>
-   <br>
+
+
+   ---
 
 4. Add styling to the form elements:
    * In `index.html` style the sortorder form element using the `formselect` CSS element we defined in milestone1. 
@@ -322,12 +331,14 @@ Lastly, we will add sorting functionality to our app. The user will be able to s
 
    <kbd> <img src="README.d/milestone2_task5c.png" width="900" border="2"> </kbd>
 
-   <div style="border: 2px solid black;  padding : 5px" >
+   ---
+   <div style="border: 1px solid gray;  padding : 5px" >
       <b>Note:</b> 
       After sorting stories, if you "like" a story the page will be reloaded and the stories will be sorted by the default sort order (i.e., timestamp). In milestone3, we will refactor our "like" use case and update the like counts without reloading the page (using JavaScript).
     </div>
+   
+   ---
 
-----------
 
    Add couple additional smiles posts and make sure that the stories are sorted correctly.  When you complete milestone2 , the main page will be similar to the following:
 
