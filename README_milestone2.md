@@ -195,7 +195,7 @@ In our Smile Portal app, the users will be able to associate some predefined tag
 
 ---
 
-### Task 4: Associating tags with posts
+### Task 3: Associating tags with posts
 
 ---
 
@@ -242,7 +242,7 @@ In Task 3, we manually associated tags with posts. Now we will update the `PostF
       The `print` statement should print the tags you selected when you filled out the "Create Post" form. 
 ---
 
-### Task 5: Displaying tags
+### Task 4: Displaying tags
 
 ---
 
@@ -274,7 +274,7 @@ We will now update  `_post.html` and display the tags associated with each post.
 
 ---
 
-### Task 6: Sorting posts
+### Task 5: Sorting posts
 
 ---
 
