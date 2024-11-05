@@ -322,7 +322,7 @@ Lastly, we will add sorting functionality to our app. The user will be able to s
 
    <kbd> <img src="README.d/milestone2_task5c.png" width="900" border="2"> </kbd>
 
-   <div style="border: 1px solid gray;  padding : 5px" >
+   <div style="border: 1px solid black;  padding : 5px" >
       <b>Note:</b> 
       After sorting stories, if you "like" a story the page will be reloaded and the stories will be sorted by the default sort order (i.e., timestamp). In milestone3, we will refactor our "like" use case and update the like counts without reloading the page (using JavaScript).
     </div>
