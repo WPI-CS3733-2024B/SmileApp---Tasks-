@@ -72,7 +72,7 @@ In our Smile Portal app, the users will be able to associate some predefined tag
          <i>Important note:</i> 
          In the file, `postTags` definition should be placed before both `Post` and `Tag` definitions. 
       </div>
-      <br>
+
 
       `postTags` should have the following attributes:
 
