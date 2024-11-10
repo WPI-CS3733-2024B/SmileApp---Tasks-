@@ -506,11 +506,11 @@ Below is the "Post New Smile" page styled using Bootstrap.
 
 3. Create an `.env` file to store the SQLAlchemy `DATABASE_URL` for connecting to the PostgreSQL database. You can read more about `.env` files here: [How To Create And Use .env Files In Python](https://www.geeksforgeeks.org/how-to-create-and-use-env-files-in-python/) 
 
-Add the following line to the `.env` file:
+  * Add the following line to the `.env` file:
 
-```
-DATABASE_URL=postgresql://username:pass@localhost:5432/smile
-```
+  ```
+    DATABASE_URL=postgresql://username:pass@localhost:5432/smile
+  ```
   * Replace `username` and `pass` with the username and password you picked in the previous step. 
 
   * Alternatively, you can download the sample [`.env`](./.env) file and change the username and password.  
@@ -540,6 +540,9 @@ DATABASE_URL=postgresql://username:pass@localhost:5432/smile
 
  <kbd> <img src="README.d/postgres_table1.png" width="800" border="2"> </kbd> 
 
+
+ 8. Take a screenshot of your DataGrip page that shows the content of your `Post` table and sae it in your `StudentApp` folder. Make sure to commit/push that image to your repo.  
+
 ### Task 11B: Deploying to AWS Cloud [Extra Credit]
 
 ---
@@ -559,10 +562,17 @@ Run the provided automated tests under `/tests` directory:
        * ```python -m unittest -v tests//test_models.py```
 
   * `test_routes.py` includes functional tests , testing the major routes of the app. These test use `pytest` framework.
-    To run them run the following command on the terminal. 
+
+    * In `routes.py` update the `assert` statements according to you own implementation. For example, on line #129, we are checking for the expected page content after login and we expect the text `"Welcome to Smile Portal!"` on the page. Change the expected content according to your own implementation. 
+    I included the below comment before each of the `assert` statements that you should revise. Search for this comment in the file. 
+    ```python
+      #Students should update this assertion condition according to their own page content
+    ```
+
+    To run these tests run the following command on the terminal. 
        * ```pytest -v tests//test_routes.py```
 
-In your term project, you will write tests similar to these. 
+  In your term project, you will write tests similar to these. 
 
 
 
@@ -587,6 +597,8 @@ In your term project, you will write tests similar to these.
        git push origin milestone3
        ```
        - You can commit multiple times. Please make sure not to make any commits to `milestone3` branch after the milestone3 deadline. 
+
+    * Open your SmileApp repo on GitHub and **create a "pull request"** to merge the commits in milestone3 branch to the main. Review the merge, resolve any  merge conflicts if there is any, and complete the merge. 
   
 
 2. Submit your repo link on Canvas
