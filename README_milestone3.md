@@ -114,7 +114,7 @@ After the database is re-created, no smile posts will be displayed on the main p
 
 4. In `auth_routes.py` add a new route to the `auth` Blueprint for registering users. 
 
-        * URL : '/user/register
+        * URL : '/user/register'
         * Methods: 'GET' and 'POST'
     
     * The starter code includes the decorator and function header for `register` view function. Make sure to update the path as `/user/register`.
@@ -207,7 +207,7 @@ In Task 4, we will add simple login and logout functionality to our Smile app. B
  6. In `auth_routes.py` add the `login` and `logout` routes to `bp_auth` Blueprint. See the StudentApp code for example route implementations. 
 
      * For `login`: 
-       * Use `URL : '/user/register` and `methods: 'GET' and 'POST'`
+       * Use `URL : '/user/login` and `methods: 'GET' and 'POST'`
        * If the user is already authenticated (logged-in), it should redirect to `main.index`. If not,  it should create an instance of `loginForm` and pass it to the `login.html` template for rendering. 
        * When the form is submitted, if the username and password match the user's credentials, it should login the user by calling `login_user` function of flask-login and redirect to `main.index`. Otherwise a `flash` message should be issued and the page should be redirected back to `auth.login`. 
 
