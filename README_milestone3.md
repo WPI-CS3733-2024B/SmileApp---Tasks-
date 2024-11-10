@@ -582,7 +582,7 @@ Run the provided automated tests under `/tests` directory:
 ---
 1. Make sure that you have the screenshot of the DataGrip that shows your `Post` table content of your PostgreSQL database in your work directory (`StudentApp` folder). 
 
-  If you deployed your application on AWS, make sure that you added your deployment link to the `README.md` file in milestone3 branch. 
+    If you deployed your application on AWS, make sure that you added your deployment link to the `README.md` file in milestone3 branch. 
 
 2. Commit and push to GitHub
 
