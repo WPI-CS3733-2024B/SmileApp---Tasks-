@@ -398,46 +398,49 @@ When you complete Task-8 , the main page will be similar to the following:
 
 ---
 
-In milestone-1 Task-5, we implemented the "like" use case. When the like button was clicked, we issued a POST request to the `main.like` route, which incremented the like count of the post and redirected to the index page to reload with the updated content. In milestone-2, when we added the "sort" use case, we had some unexpected side effects of the redirect: Whenever we liked a story, the sort order was reset to the default sort order. 
+In milestone-1 Task-5, we implemented the "like" use case. When the "like" button was clicked, we issued a POST request to the `main.like` route, which incremented the like count of the post and redirected to the index page to reload with the updated content. In milestone-2, when we added the "sort" use case, we had some unexpected side effects of the redirect: Whenever we liked a story, the sort order was reset to the default sort order. 
 
 In this task, we will revise our "like" usecase implemention and we will update the likecount on the index page without a re-load. 
 
  1. First we will revise the `like` view function and have it return the updated post count in a JSON object. 
     * In `routes.py` , delete the redirect call to `main.index` route.  
-    * Query the `Post` table and get the post whose count we updated (we will re-read the `Post` object from the database to get the updated object)
+    * After the count of the post is incremented and  updated in the database, re-read the `Post` object from the database to get the updated object.
     * Return a JSON object that includes `post_id` and the updated like count of the post. (Hint: You can include the `post_id` and likecount in a Python dictionary and call `jsonify`)
     * Add  `GET` to the methods of the like route. 
 
 2. Test your revised route by typing the following URL in the browser. Replace `<post_id>` with the id of a post that exists in your database. 
-  `http://localhost:5000/post/<post_id>/like `
 
-  If the request is successful, you should see the JSON output with the updated count. For example, assuming `post_id` is 7: 
-  ```json
-  {
-  "like_count": 2,
-  "post_id": 7
-  }
-  ```
+    `http://localhost:5000/post/<post_id>/like `
+
+    If the request is successful, you should see the JSON output with the updated count. For example, assuming `post_id` is 7: 
+    ```json
+    {
+    "like_count": 2,
+    "post_id": 7
+    }
+    ```
   3. We will next write couple JavaScript functions to update the like count of the post with the updated value. 
-    * In `_post.html` add a script block.
-  ```javascript  
-    {% block script %}
-    <script>
-    // your JavaScript code 
-    </script>    
-   {% endblock %}
-  ```
+    * In `_post.html` add a script block at the end of the page.
+    ```javascript  
+      {% block script %}
+      <script>
+      // your JavaScript code 
+      </script>    
+    {% endblock %}
+    ```
 
-  * Define an asynchronous JavaScript function called `like_post` which will take the `post_id` and issue a request to the `main.like` route  (See the `get_roster` function in StudentApp. ) You should first get the URL of the route by calling `url_for`, and than issue the request using JavaScript `fetch` function.  The response received from the request should be passed to the `update_likes` function defined in the next step. 
-  * Define a JavaScript function called `update_likes` that will take the json data received from the request and update content of the HTTP element which displays the lke count of the "liked" post. 
-      * The given starter code uses a HTML table to render a story's (post's) data. Each of those tables is assigned a unique id having the following format (see the first line of `_post.html`): 
-      `post-<post_id>` where `post_id` is the id of the post displayed in the table.
+  * Define an asynchronous JavaScript function called `like_post` which will take the `post_id` and issue a request to the `main.like` route  (see the `get_roster` function in StudentApp. ) You should first get the URL of the route by calling `url_for`, and than issue the request using JavaScript `fetch` function.  The response received from the request should be passed to the `update_likes` function defined in the next step. 
+  * Define a JavaScript function called `update_likes` that will take the JSON data received from the request and update content of the HTTP element which displays the like count of the "liked" post. 
+      * The given starter code uses a HTML table to render a story's (post's) data. Each of the "post" tables is assigned a unique id having the following format (see the first line of `_post.html`): 
+      
+        `post-<post_id>`  where `post_id` is the id of the post displayed in the table.
+
       * In the `update_likes` function retrieve the HTML element having the id `post-<post_id>` (i.e., the table that displays that post's data).
       * Then, find the div element in that table having the class selector `.likecount`.  This is the element having the likecount content. 
-      * Update the `textContent` of the div element with the "likecount" value recieved in JSON. 
-    * Don't forget to call the `update_likes` function in  `like_post` and pass the received json response.
+      * Update the `textContent` of that div element with the "likecount" value recieved in JSON data. 
+    * Don't forget to call the `update_likes` function in  `like_post` and pass the received JSON response.
 
-  4. Open the frontend and try liking some stories. Make sure that the likecount for the post is updated correctl without a page refresh. 
+  4. Open the frontend and try liking some stories. Make sure that the likecount for the post is updated correctly without a page refresh. 
 
 ---
 
@@ -455,80 +458,87 @@ You should style the following using Bootstrap in your pages:
 
   * Navigation bar (`base.html`)
   * Create post form (`create.html`)
-  * Register and login forms (`register.html` and 'login.html`)
-  * Sort form (index.html`)
+  * Register and login forms (`register.html` and `login.html`)
+  * Sort form (`index.html`)
 
 Styling of the following using Bootstrap is **optional** and will be considered for extra credit:
   * The post stories themselves (`_post.html`)
-    * In my implementation, I used the `card` Bootstrap styling for the posts. Instead of a HTML `<table>`, I included each post in a `<div>` element styled as `card` and organized the parts of the post story (i.e., title, body, timestap, likecount, writer user, etc.) using Bootstrap grid system. 
+    * In my implementation, I used the `card` Bootstrap styling for the posts. Instead of a HTML `<table>`, I included each post in a `<div>` element styled as `card` and organized the parts of the post story (i.e., title, body, timestap, likecount, writer user, etc.) using Bootstrap grid styling. 
 
 
 Below is the index page styled using Bootstrap. 
   <kbd> <img src="README.d/milestone3_final_bootstrap.png" width="1200" border="2"> </kbd>
 
-Below are the register and login pages styled using Bootstrap. 
+Below is the "Post New Smile" page styled using Bootstrap. 
   <kbd> <img src="README.d/milestone3_final_bootstrap_form.png" width="1200" border="2"> </kbd>
 
 ---
 
 ### Task 11A: PostgreSQL integration 
 
-1. Make sure  PostgreSQL is installed on your computer. Also make sure that the `psycopg2` (or `psycopg2-binary`) driver is installed in the virtual environment. You can check if `psycopg2` is installed by running the following on the command line. It should diaplay the current version of the driver installed.  
+1. Make sure that the `psycopg2` driver is installed in the virtual environment. You can check if `psycopg2` is installed by running the following on the command line. It should diaplay the current version of the driver installed.  
 
     `$ pip show psycopg2`  
-or
 
-      `$ pip show psycopg2-binary`  
+    Note: If you installed  `psycopg2-binary` driver instead of `psycopg2`, it should also work. Use the following command to check for `psycopg2-binary`:   `$ pip show psycopg2-binary`  
 
-2. On the command line run the following and enter the password when prompted. 
+2. Make sure  PostgreSQL is installed on your computer. `psql` is a terminal-based client to PostgreSQL. It enables you to type in queries interactively, issue them to PostgreSQL, and see the query results.   
 
-    `psql` is the command line client for PostgreSQL database. The following command will connect to `postgres` database on Postgres server through user `postgres` :
+  * On the command line,  run the following and enter the password when prompted. It will connect to `postgres` database on Postgres server through user `postgres` :
 
 ```
    psql -u postgres -d postgres
 ```
 
-On th psql commnad line, run the following to create a new user on the Postges server and provide its password. We will use this user role to connect to the Postgres database. <b> Replace `username` with your own username and `pass` with the password you pick. </b>
+    
+  * On the psql prompt, run the following to create a new user role in the PostgreSQL server and provide its password. We will use this user role to connect to the `smile` database in our application. <b> Replace `username` with your own username and `pass` with the password you pick. </b>
 
 ```
   CREATE ROLE username WITH CREATEDB LOGIN PASSWORD 'pass';
 ```
 
-Next create a new database called `smile` on the Postgres database and make your new user the owner:
+  * Next create a new database called `smile` on the Postgres database and make your new user the owner:
 ```
   CREATE DATABASE smile WITH OWNER username;
 ```
 
-3. Create a `.env` file to store the SQLAlchemy `DATABASE_URL` for connecting to the PostgreSQL database. Add the following line to the `.env` file:
+  (To close the  psql client, you can type `exit`.)
+
+3. Create an `.env` file to store the SQLAlchemy `DATABASE_URL` for connecting to the PostgreSQL database. You can read more about `.env` files here: [How To Create And Use .env Files In Python](https://www.geeksforgeeks.org/how-to-create-and-use-env-files-in-python/) 
+
+Add the following line to the `.env` file:
 
 ```
 DATABASE_URL=postgresql://username:pass@localhost:5432/smile
 ```
-Replace `username` and `pass` with the username and password you picked in the previous step. 
+  * Replace `username` and `pass` with the username and password you picked in the previous step. 
 
-Alternatively, you can download the sample [`.env`](.env) file and change the username and password.  
+  * Alternatively, you can download the sample [`.env`](./.env) file and change the username and password.  
 
-When there is an `.env` file, the flask application will use the `DATABASE_URL` defined in the `.env` file, therefor will connect to the Postgres sever. If the `.env` file is not present, it will use the hardcoded Sqlite DATABASE_URL defined in `config.py`. The `config.py` file in  the starter code already takes care of this. 
+  * When there is an `.env` file, the flask application will use the `DATABASE_URL` defined in the `.env` file and will connect to the PostgreSQL sever. If the `.env` file is not present, it will use the hardcoded DATABASE_URL defined in `config.py` (which connects to the SQLite3 database). The `config.py` file in  the starter code already takes care of this. 
 
-4. Run the following commands to create the flask migration repository and create the database tables on the smile database on the Postgres server. 
+4. We will create the database tables on the PostgreSQL server outside of the application. Therefore, we need to change the way we insert  predefined tags to the database. 
+  * In `smile.py` delete the "event listener" decorator for the `add_tags` function.(i.e., the line that starts with `@sqla.event.listens_for...`) . Call `add_tags` finction in `init_db` after the line `db.create_all()` so that the tags are inserted to the database.
 
-```
-flask db init
-flask db migrate
-flask db upgrade
-```
+5. Run the following commands to create the flask migration repository and create the database tables on the smile database on the PostgreSQL server. 
 
-5. Now you should be able to run the application. Your backend will talk to the PostgreSQL database instead of the Sqlite database.  
+    ```
+    flask db init
+    flask db migrate
+    flask db upgrade
+    ```
 
-  Register one or two users, create couple posts, and like couple stories. 
+6. Now you should be able to run the application. Your backend will talk to the PostgreSQL database instead of the SQLite database.  
 
-6. Open DataGrip and create a new PostgreSQL `Data Source` for the new smile database. Make sure to enter the `username` and password you created above and the database `smile`. Below image shows an example Data Source connection configuration. 
+  * Register one or two users, create couple posts, and like couple stories. 
 
- <kbd> <img src="README.d/datagrip.png" width="900" border="2"> </kbd>
+7. Open DataGrip and create a new PostgreSQL `Data Source` for the new `smile` database. Make sure to enter the username and password you created above and the database `smile`. Below image shows an example "Data Source connection configuration". 
 
- Once you connect to the data source, browse through the tables of the smile database and make sure that all tables are created and the User and Post data you entered in the application are stored in the Postgres database.
+  <kbd> <img src="README.d/datagrip.png" width="600" border="2"> </kbd>
 
- <kbd> <img src="README.d/postgres.png" width="900" border="2"> </kbd> 
+ Once you connect to the data source for `smile`, browse through the tables of the `smile` database and make sure that all tables are created in the PostgreSQL database. `User` and `Post` data you entered in the application should be stored in the database. 
+
+ <kbd> <img src="README.d/postgres_table1.png" width="800" border="2"> </kbd> 
 
 ### Task 11B: Deploying to AWS Cloud [Extra Credit]
 
