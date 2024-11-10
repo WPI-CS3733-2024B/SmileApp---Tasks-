@@ -549,6 +549,7 @@ Below is the "Post New Smile" page styled using Bootstrap.
 
 Follow the instructions in the [AWS Setup Guide](./AWSSetupGuide/awsSetup.md). Special thanks to Vivek Jagadeesh for creating this document.  
 
+Edit the `README.md` file and add your AWS deployment link to the top of the file.  
 
 ---
 
@@ -579,7 +580,11 @@ Run the provided automated tests under `/tests` directory:
 ---
 ### How to Submit
 ---
-1. Commit and push to GitHub
+1. Make sure that you have the screenshot of the DataGrip that shows your `Post` table content of your PostgreSQL database in your work directory (`StudentApp` folder). 
+
+  If you deployed your application on AWS, make sure that you added your deployment link to the `README.md` file in milestone3 branch. 
+
+2. Commit and push to GitHub
 
    *  Make sure you are in branch `milestone3`, and check the commit status. 
        ```
@@ -601,7 +606,7 @@ Run the provided automated tests under `/tests` directory:
     * Open your SmileApp repo on GitHub and **create a "pull request"** to merge the commits in milestone3 branch to the main. Review the merge, resolve any  merge conflicts if there is any, and complete the merge. 
   
 
-2. Submit your repo link on Canvas
+3. Submit your repo link on Canvas
 
    * Copy your repository URL and submit it in the Canvas `Milestone3` dropbox. 
  
