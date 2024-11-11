@@ -487,7 +487,7 @@ Below is the "Post New Smile" page styled using Bootstrap.
   * On the command line,  run the following and enter the password when prompted. It will connect to `postgres` database on Postgres server through user `postgres` :
 
 ```
-   psql -u postgres -d postgres
+   psql -U postgres -d postgres
 ```
 
     
