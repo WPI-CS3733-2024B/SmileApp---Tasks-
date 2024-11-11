@@ -451,8 +451,8 @@ In this task, we will revise our "like" usecase implemention and we will update 
 Improve the style of your application using Bootstrap styling. You can repeat the steps from the StudentApp v.10. 
 
 The following were the templates we used in StudentsApp for the navigation bar and the wt-forms rendering. 
-  * Navigation bar: https://github.com/WPI-CS3733-2024B/StudentApp-starter-2024/blob/main/app/templates/bootstrap_base.htmlLinks to an external site.
-  * Links to an external site.WTF forms: https://github.com/WPI-CS3733-2024B/StudentApp-starter-2024/blob/main/app/templates/bootstrap_wtf.htmlLinks to an external site.  
+  * Navigation bar: https://github.com/WPI-CS3733-2024B/StudentApp-starter-2024/blob/main/app/templates/bootstrap_base.html.
+  * WTF forms: https://github.com/WPI-CS3733-2024B/StudentApp-starter-2024/blob/main/app/templates/bootstrap_wtf.html  
 
 You should style the following using Bootstrap in your pages:
 
