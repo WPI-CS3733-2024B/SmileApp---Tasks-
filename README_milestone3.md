@@ -328,7 +328,10 @@ In our app, the logged-in user will be able to delete their own posts.
 
     1. The route decorator function should query the `Post` table and get the post with id `post_id`. (Remember that `post_id` needs to be passed to the decorator function as argument) 
     2. If the post is found, it should remove the post and all its tags. 
-        * In `models.py`, set the `passive_deletes` property of the `Post.tags` relationship to `True` (i.e., add `passive_deletes=True` to `tags` relationship). This will result in a cascaded delete on the tags of the deleted post. When we delete a post, the tags associations with that post will also be cleared.  
+        * In `models.py`, set the `passive_deletes` property of the `Post.tags` relationship to `True` (i.e., add `passive_deletes=True` to `tags` relationship). 
+        * In a `for` loop iterate over all tags of the post and remove them:
+            * `thepost.tags.remove(t)` where `thepost` is the post that will be deleted and `t` is a tag that needs to be deleted.
+        * You should commit after you remove the tags of the post. You will get a SQLAlchemy error if you fail to commit.   
         * Delete the post and commit. (Hint: `db.session.delete(thepost)`)
     4. You can issue flash messages when the post is succesfully deleted. 
     5. After the post is deleted, the page should be redirected to `main.index`'.
