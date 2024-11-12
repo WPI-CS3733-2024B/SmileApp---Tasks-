@@ -444,7 +444,12 @@ In this task, we will revise our "like" usecase implemention and we will update 
       * Update the `textContent` of that div element with the "likecount" value recieved in JSON data. 
     * Don't forget to call the `update_likes` function in  `like_post` and pass the received JSON response.
 
-  4. Open the frontend and try liking some stories. Make sure that the likecount for the post is updated correctly without a page refresh. 
+  4. In milestone1, we added a <form> element to `_post.html` for submitting the post request to `main.like` route for liking a post. We now will handle this using our JavaScript function. 
+    * Remove the HTML form element for the "like" button, and add an HTML <button> element. 
+    * When clicked, your `like_post` JavaScript function should be called and `post`s id should be passed to it. For an example, see the button we added to display class rosters in StudentApp.
+    * Don't forget to apply the `likebtn` styling to this button.  
+  
+  5. Open the frontend and try liking some stories. Make sure that the likecount for the post is updated correctly without a page refresh. 
 
 ---
 
