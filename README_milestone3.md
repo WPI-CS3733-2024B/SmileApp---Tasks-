@@ -425,13 +425,13 @@ In this task, we will revise our "like" usecase implemention and we will update 
   3. We will next write couple JavaScript functions to update the like count of the post with the updated value. 
     * In `_post.html` add a script block at the end of the page.
 
-  ```javascript  
+  <code>javascript  
       {% block script %}
       <script>
       // your JavaScript code 
       </script>    
-    {% endblock %}
-  ```
+     {% endblock %}
+  </code>
 
   * Define an asynchronous JavaScript function called `like_post` which will take the `post_id` and issue a request to the `main.like` route  (see the `get_roster` function in StudentApp. ) You should first get the URL of the route by calling `url_for`, and than issue the request using JavaScript `fetch` function.  The response received from the request should be passed to the `update_likes` function defined in the next step. 
   * Define a JavaScript function called `update_likes` that will take the JSON data received from the request and update content of the HTTP element which displays the like count of the "liked" post. 
