@@ -424,6 +424,7 @@ In this task, we will revise our "like" usecase implemention and we will update 
     ```
   3. We will next write couple JavaScript functions to update the like count of the post with the updated value. 
     * In `_post.html` add a script block at the end of the page.
+    
     ```javascript  
       {% block script %}
       <script>
