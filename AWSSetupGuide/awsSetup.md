@@ -123,11 +123,11 @@ Now log out of EC2 by typing <code>exit</code>
     - click on the name of your production database
     - locate the endpoint of your database and copy it.
     - Download the included [Dockerfile](./Dockerfile) and change the  
-    <code>ENV SQLALCHEMY_DATABASE_URI=</code> 
+    <code>ENV DATABASE_URL=</code> 
     
         line to be 
     
-        <code>ENV SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://[INSERT DB USERNAME]:[INSERT DB PASSWORD]@[INSERT ENDPOINT HERE]/postgres'
+        <code>ENV DATABASE_URL='postgresql+psycopg2://[INSERT DB USERNAME]:[INSERT DB PASSWORD]@[INSERT ENDPOINT HERE]/postgres'
         </code>
 
         - if you followed the naming conventions in this guide the arguments should all be postgres
