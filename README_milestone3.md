@@ -559,7 +559,7 @@ Below is the "Post New Smile" page styled using Bootstrap.
 Follow the instructions in the [AWS Setup Guide](./AWSSetupGuide/awsSetup.md). Special thanks to Vivek Jagadeesh for creating this document.  
 
 Here is a video where Vivek walks you through these instructions. 
-* [Walkthrough of AWS Deployment] (https://echo360.org/media/9635be0e-0308-4203-9036-e3d9048bd277/public)
+* [Walkthrough of AWS Deployment](https://echo360.org/media/9635be0e-0308-4203-9036-e3d9048bd277/public)
 And here is the accompanying set of slides. 
 * [Deploying an app to AWS EC2 & RDS](./AWSSetupGuide/AWS%20Cloud%20Deployment%20-%20Google%20Slides.pdf)
 
