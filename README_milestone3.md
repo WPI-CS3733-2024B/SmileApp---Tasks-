@@ -564,7 +564,8 @@ Here is a video where Vivek walks you through these instructions.
 And here is the accompanying set of slides. 
 * [Deploying an app to AWS EC2 & RDS](./AWSSetupGuide/AWS%20Cloud%20Deployment%20-%20Google%20Slides.pdf)
 
-Edit the `README.md` file and add your AWS deployment link to the top of the file.  
+To submit Task11B: 
+<b> Edit the `README.md` file and add your AWS deployment link to the top of the file.</b>  
 
 ---
 
