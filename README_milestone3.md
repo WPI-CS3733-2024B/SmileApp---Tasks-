@@ -543,6 +543,7 @@ Below is the "Post New Smile" page styled using Bootstrap.
 
 7. Open DataGrip and create a new PostgreSQL `Data Source` for the new `smile` database. Make sure to enter the username and password you created above and the database `smile`. Below image shows an example "Data Source connection configuration". 
 
+At the bottom of the page, make sure that the "TestConnection" does not give an error. If you haven't installed the DataGrip driver for PostgreSQL connection before, go ahead and install it by clicking the link and test the connection.
   <kbd> <img src="README.d/datagrip.png" width="600" border="2"> </kbd>
 
  Once you connect to the data source for `smile`, browse through the tables of the `smile` database and make sure that all tables are created in the PostgreSQL database. `User` and `Post` data you entered in the application should be stored in the database. 
