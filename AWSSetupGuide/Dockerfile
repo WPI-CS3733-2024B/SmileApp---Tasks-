@@ -2,7 +2,7 @@
         FROM python:3.12.2-slim 
         #set the home and working directory to be the app directory
         ENV HOME=/app
-        ENV SQLALCHEMY_DATABASE_URI='REPLACE WITH YOUR PROD DATABASE URL'
+        ENV DATABASE_URL ='REPLACE WITH YOUR PROD DATABASE URL'
         WORKDIR /app
         #move the requirements.txt text file into the container and install dependencies
         ADD ./requirements.txt ./requirements.txt
