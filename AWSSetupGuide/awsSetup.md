@@ -135,7 +135,7 @@ Now log out of EC2 by typing <code>exit</code>
 ### Step 7B - deploying the container to EC2
 - This is the final step. SSH into your EC2 instance.
 - Next, we need to pull the container you just pushed to docker hub. Run <code>docker pull yourUsername/YOUR-REPOSITORY-NAME</code>. This will take a second.
-- Now that the container is pulled, all that we have to do is run it. Simply type <code>docker run -d -p 80:3001 YOUR-DOCKER-HUB-USERNAME/YOUR-REPO-NAME </code>, and your container will start.
+- Now that the container is pulled, all that we have to do is run it. Simply type <code>docker run -d -p 443:3001 YOUR-DOCKER-HUB-USERNAME/YOUR-REPO-NAME </code>, and your container will start.
     - If you need to debug something, omit the -d flag. This starts the container in "decoupled mode" which means that no output is displayed.
 - Between iterations, make sure to run <code> docker system prune </code>. This will clean up containers not being used, and will prevent you from running out of storage.
 - Your app should be accessible on the HTTP url. Use the public ipv4 link (which we used to ssh into the server), and MAKE SURE TO START THE LINK WITH HTTP. Your website will not be available via HTTPS since we did not configure an SSL certificate. So, your website should be available on http://[INSERT IP]
